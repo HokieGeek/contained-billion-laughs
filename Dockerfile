@@ -1,6 +1,9 @@
+FROM gradle:jdk8
+WORKDIR /usr/src
+COPY . .
+RUN gradle build
+
 FROM openjdk:8
-WORKDIR /usr/src/org/sonatype/se/hack/
-COPY ./src/main/java/org/sonatype/se/hack .
-RUN javac Main.java
-RUN pwd ; ls
-CMD ["java", "-cp", "/usr/src", "org.sonatype.se.hack.Main"]
+WORKDIR /usr/app
+COPY --from=0 /usr/src/build/libs .
+CMD ["/bin/sh", "-c", "java -cp *.jar org.sonatype.se.hacks.lolz.Main"]
