@@ -4,6 +4,10 @@ COPY . .
 RUN gradle build
 
 FROM openjdk:8
+EXPOSE 8338
 WORKDIR /usr/app
-COPY --from=0 /usr/src/build/libs .
-CMD ["/bin/sh", "-c", "java -cp *.jar org.sonatype.se.hacks.lolz.Main"]
+COPY --from=0 /usr/src/build/distributions .
+RUN tar -xvf lolz.tar
+CMD ["/usr/app/lolz/bin/lolz"]
+# COPY --from=0 /usr/src/build/libs .
+# CMD ["/bin/sh", "-c", "java -cp *.jar org.sonatype.se.hacks.lolz.Main"]
