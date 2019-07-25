@@ -11,6 +11,8 @@ public class App extends Application {
 
     @Override
     protected void onInit() {
-        GET("/", routeContext -> routeContext.send("TODO: LOLZ"));
+        GET("/", routeContext -> routeContext.send("Sample app that demonstates a billion laughs attack"));
+
+        PUT("/config", routeContext -> routeContext.send("TODO: Accept xml here"));
     }
 }
