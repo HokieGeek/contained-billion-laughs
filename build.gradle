@@ -1,6 +1,7 @@
 apply plugin: 'java'
 apply plugin: 'application'
 
+applicationDefaultJvmArgs = ["-Djdk.xml.entityExpansionLimit=0"]
 mainClassName = 'org.sonatype.se.hacks.lolz.Main'
 
 repositories {

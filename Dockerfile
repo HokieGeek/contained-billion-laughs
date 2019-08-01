@@ -7,5 +7,5 @@ FROM openjdk:8
 EXPOSE 8338
 WORKDIR /usr/app
 COPY --from=0 /usr/src/build/distributions .
-RUN tar -xvf lolz.tar
+RUN tar -xf lolz.tar
 CMD ["/usr/app/lolz/bin/lolz"]
